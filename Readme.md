@@ -1,6 +1,6 @@
-#Ranks Test App
+# Ranks Test App
 
-##Инструкция по запуску (Используется Docker):
+## Инструкция по запуску (Используется Docker):
 Добавить 'Publishable key' в static/js/stripe_payment_intent.js и static/js/stripe_session.js.  
 Добавить. 'Secret key' в 'RanksTest/settings.py' необходимого аккаунта системы Stripe.  
 Выполнить следующие комманды:  
