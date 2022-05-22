@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/payment_intent.css' %}"/>
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>Order page</title>
+</head>
+<body>
+<div>
+<h1>Заказ:</h1>
+{% for item in order_items %}
+    <h2>Название товара: {{ item.name }}</h2>
+    <p>Описание: {{ item.description }}</p>
+    <p>Цена: {{ item.price }}</p>
+{% endfor %}
+<p>Итоговая цена: <b>{{ total_sum }} usd</b></p>
+
+<!-- Display a payment form -->
+<form id="payment-form">
+    {% csrf_token %}
+    <div id="payment-element">
+        <!--Stripe.js injects the Payment Element-->
+    </div>
+    <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Оплатить</span>
+    </button>
+    <div id="payment-message" class="hidden"></div>
+</form>
+</div>
+</body>
+<script src="{% static 'js/stripe_payment_intent.js' %}" defer></script>
+</html>

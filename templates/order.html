@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://js.stripe.com/v3/"></script>
+    <title>Order page</title>
+</head>
+<body>
+<h1>Заказ:</h1>
+{% for item in order_items %}
+    <h2>Название товара: {{ item.name }}</h2>
+    <p>Описание: {{ item.description }}</p>
+    <p>Цена: {{ item.price }}</p>
+{% endfor %}
+<p>Итоговая цена: <b>{{ total_sum }} usd</b></p>
+<button id="buyOrderBtn">Купить</button>
+</body>
+<script src="{% static 'js/stripe_session.js' %}"></script>
+</html>
